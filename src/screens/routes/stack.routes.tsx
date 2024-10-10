@@ -1,15 +1,22 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator  } from '@react-navigation/stack';
 
 import HomeScreen from '../HomeScreen'   
 import GalleryScreen from '../GalleryScreen'   
 
-const Stack = createNativeStackNavigator();
+const {Screen, Navigator} = createStackNavigator();
 
-function MyStack() {
+export function StackRoutes() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Gallery" component={GalleryScreen} />
-    </Stack.Navigator>
+      <Navigator initialRouteName='Home'>
+        <Screen
+          name="Home"
+          component={HomeScreen} 
+          options={{
+            title: 'Main Menu',
+            headerTintColor: 'blue'
+          }}
+          />
+        <Screen name="Gallery" component={GalleryScreen} />
+      </Navigator>
   );
 }
